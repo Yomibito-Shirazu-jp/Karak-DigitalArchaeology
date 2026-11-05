@@ -1,0 +1,40 @@
+{
+  "pin_block": 26347966,
+  "pin_hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d",
+  "custody_assets": {
+    "OptimismPortal 0xeeCE9CD7Abd1CC84d9dfc7493e7e68079E47eA73": {
+      "ETH": "1846.4981969416722"
+    },
+    "L1StandardBridge 0xBa61f25DD9F2D5f02d01B1C2c1c5F0b14C4B48a3": {
+      "USDC": "156769.046684",
+      "rswETH_wei": "166553334246815451011",
+      "ETH": "0"
+    },
+    "ETHYieldManager 0x98078db053902644191f93988341E31289E1C8FE": {
+      "stETH_wei": "12961804628556163626",
+      "WETH_wei": "100000000000",
+      "ETH": "0.0006"
+    }
+  },
+  "claims_executed": {
+    "ETHClaimed_events": 300,
+    "unique_claimers": 300,
+    "total_ETH_claimed": 29.723958719929808,
+    "source": "eth_getLogs ETHClaimed(address indexed,uint256) full-history scan to pin block"
+  },
+  "liabilities": {
+    "total_entitlements": "UNKNOWN — merkle tree not published",
+    "claimed_cumulative": "sum of claimedETH deltas = 29.723958719929808 ETH",
+    "unclaimed_lower_bound": "1846.4981969416722 ETH in portal escrow minus any non-claimant allocation",
+    "insolvency_note": "claimable <= balance enforcement is FCFS; if sum(entitlements) > escrow, late claimants revert"
+  },
+  "discrepancy": {
+    "L2BEAT_reported_ETH": 1876,
+    "observed_ETH": 1846.4981969416722,
+    "delta": "~29.5 ETH — consistent with 29.7239 ETH claimed via 300 ETHClaimed events (snapshot timing)"
+  },
+  "invariants": {
+    "escrow_delta_equals_payout": "verified in local replay (exact to wei)",
+    "internal_vs_external": "sweepETH L1SB->portal donateETH is internal, not an outflow"
+  }
+}

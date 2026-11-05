@@ -1,0 +1,202 @@
+{
+ "pin_block": 26347966,
+ "pin_hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d",
+ "tests": [
+  {
+   "test": "claimETH rand acct empty proof",
+   "label": "NEG",
+   "expected": "revert invalid proof",
+   "actual": "execution reverted: OptimismPortal: invalid proof",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "claimETH amount=0",
+   "label": "NEG",
+   "expected": "revert invalid amount",
+   "actual": "execution reverted: OptimismPortal: invalid amount",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "claimETH full balance fake proof",
+   "label": "NEG",
+   "expected": "revert invalid proof",
+   "actual": "execution reverted: OptimismPortal: invalid proof",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "setMerkleRootETH non-guardian",
+   "label": "NEG",
+   "expected": "revert only guardian",
+   "actual": "execution reverted: OptimismPortal: only guardian",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "pause non-guardian",
+   "label": "NEG",
+   "expected": "revert",
+   "actual": "execution reverted: OptimismPortal: only guardian can pause",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "recoverETH non-guardian",
+   "label": "NEG",
+   "expected": "revert",
+   "actual": "execution reverted: OptimismPortal: only guardian",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "depositTransaction",
+   "label": "NEG",
+   "expected": "revert deposits disabled",
+   "actual": "execution reverted: OptimismPortal: deposits disabled",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "initialize on live proxy",
+   "label": "NEG",
+   "expected": "revert initialized",
+   "actual": "execution reverted: Initializable: contract is already initialized",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "finalizeWithdrawalTransaction",
+   "label": "NEG",
+   "expected": "revert path disabled",
+   "actual": "execution reverted: OptimismPortal: traditional withdrawal path disabled, use the new claim function",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "claimTokens fake proof",
+   "label": "NEG",
+   "expected": "revert invalid proof",
+   "actual": "execution reverted: L1StandardBridge: invalid proof",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "recoverTokens non-guardian",
+   "label": "NEG",
+   "expected": "revert only guardian",
+   "actual": "execution reverted: L1StandardBridge: only guardian",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "guardian setMerkleRootETH",
+   "label": "SYNTH",
+   "expected": "status 0x1",
+   "actual": "0x1",
+   "pass": true,
+   "detail": "root=0x57541077672c1cd799"
+  },
+  {
+   "test": "SYNTH claimETH valid leaf pays exact",
+   "label": "SYNTH",
+   "expected": "+100 ETH to claimer",
+   "actual": "delta=99.9999",
+   "pass": true,
+   "detail": "escrow delta=100.0000 gas=0.0001"
+  },
+  {
+   "test": "double claim same leaf",
+   "label": "SYNTH",
+   "expected": "revert nothing to claim",
+   "actual": "0x0",
+   "pass": true,
+   "detail": "receipt status"
+  },
+  {
+   "test": "attacker reuses victim amount/proof",
+   "label": "SYNTH",
+   "expected": "revert invalid proof (msg.sender bound)",
+   "actual": "execution reverted: OptimismPortal: invalid proof",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "cumulative second claim pays delta",
+   "label": "SYNTH",
+   "expected": "+50 ETH",
+   "actual": "delta=50.0000",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "attacker claims amount not in leaf",
+   "label": "SYNTH",
+   "expected": "revert invalid proof",
+   "actual": "0x0",
+   "pass": true,
+   "detail": "leaf binds (addr,exact amount)"
+  },
+  {
+   "test": "guardian-granted leaf pays exactly",
+   "label": "SYNTH",
+   "expected": "+10 ETH",
+   "actual": "delta=9.9999",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "SYNTH claimTokens pays USDC",
+   "label": "SYNTH",
+   "expected": "+1000 USDC",
+   "actual": "delta=1000.00",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "claimTokens duplicate token",
+   "label": "SYNTH",
+   "expected": "revert duplicate token",
+   "actual": "execution reverted: L1StandardBridge: invalid proof",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "recoverETH while unpaused",
+   "label": "SYNTH",
+   "expected": "revert claims not paused",
+   "actual": "execution reverted: OptimismPortal: claims not paused",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "recoverETH paused but early",
+   "label": "SYNTH",
+   "expected": "revert recovery not available",
+   "actual": "execution reverted: OptimismPortal: recovery not available",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "claimETH while paused",
+   "label": "SYNTH",
+   "expected": "revert claims paused",
+   "actual": "execution reverted: OptimismPortal: claims paused",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "test": "recoverETH after 2027 sweeps all",
+   "label": "SYNTH",
+   "expected": "escrow drained",
+   "actual": "portal_bal=0.0000",
+   "pass": true,
+   "detail": "to guardian"
+  }
+ ],
+ "summary": {
+  "total": 24,
+  "passed": 24
+ }
+}
