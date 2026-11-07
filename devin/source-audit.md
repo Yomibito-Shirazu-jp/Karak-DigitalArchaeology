@@ -15,7 +15,6 @@ results were produced on a local anvil fork at the pin block (labeled SYNTH).
 | L1ERC721Bridge | `0x952851ceCB07705a5bb483c1cE080F97E1E7491e` | — | custody irrelevant (no NFT escrow observed) |
 | L2OutputOracle | `0x0A23342520Aa8Ca963c4201801f4D3E95e731637` | `0x394317b191f5c7a371e74594776b1efdc33d10d6` | legacy withdrawal path hard-reverts in portal |
 | SystemConfig | `0x622333688CC1878C7Ff4205c89Bde051798788A7` | `0x01d5303f326b992845eef2782d4c9a7c6dde4470` | source of address registry above |
-| ETHYieldManager | `0x98078db053902644191f93988341E31289E1C8FE` | `0x7b646dec285da35ad81c6e330435b1f92d8799ab` | residual custody (~12.96 stETH + 0.0001 WETH + 0.0006 ETH) |
 | Guardian (Safe) | `0x28A227d4faF0f4f75897438E24C43EF1CDABb920` | — | `pause`/`unpause`/`setMerkleRoot{ETH}`/`recover{ETH,Tokens}` |
 | ProxyAdmin | `0x1612f868eba1cea65ee66bf4a7c75001b0d4065c` | — | admin slot `0xb53127…` for OP-style proxies |
 
@@ -82,7 +81,7 @@ L1StandardBridge v2.3.0 mirrors this for ERC-20:
 
 - Guardian Safe owner set + threshold (Safe proxy — needs getOwners/getThreshold
   reads; recorded as TODO in unresolved list of prior audit).
-- ETHYieldManager impl `0x7b646dec…` source not yet retrieved (minor custody).
+- ~~ETHYieldManager~~ **correction 2026-11-07**: `0x98078db…` is a **Blast** L1 escrow (L2BEAT blast.json, `owner()=0x4f72ee94…`), wrongly included earlier — removed from K2 scope.
 - Off-chain merkle trees for `merkleRootETH` and `merkleRoot` are **not
   published** — leaf/proof availability cannot be verified on-chain.
 - Full historical fund-flow ledger (all deposits/withdrawals pre-shutdown) not

@@ -12,8 +12,6 @@ Pin: L1 block 26347966 / `0x9a1b6259…e0d`.
 | OptimismPortal `0xeeCE…EA73` | ETH | 1,846.4981969416722 |
 | L1StandardBridge `0xBa61…48a3` | USDC | 156,769.046684 |
 | L1StandardBridge `0xBa61…48a3` | rswETH | 166.553334246815451011 wei |
-| ETHYieldManager `0x9807…C8FE` | stETH | 12.961804628556163626 wei-normalized (12.96 stETH) |
-| ETHYieldManager `0x9807…C8FE` | WETH + ETH | 0.0001 WETH + 0.0006 ETH |
 
 ## Claimed so far
 
@@ -63,7 +61,7 @@ since shutdown mechanism activation — reconciles the ~29.5 ETH gap vs L2BEAT's
 - Total entitlement sum (tree leaves) — unknown, off-chain.
 - Whether the 166.55 rswETH + 156,769 USDC in L1SB is fully covered by
   `merkleRoot` leaves — unknown without tree.
-- EYM's residual ~13 stETH custody obligations — queue semantics not audited.
+- ~~EYM stETH~~ **correction 2026-11-07**: `0x98078db…` belongs to **Blast**, not K2 — removed.
 
 ## Publication-safety
 

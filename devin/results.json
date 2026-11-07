@@ -1,30 +1,36 @@
 {
-  "contestant": "devin",
-  "pin_block": 26347966,
-  "pin_hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d",
-  "question_A_owner_recovery": {
-    "route": "claimETH / claimTokens with guardian-published merkle leaf",
-    "verdict": "AUTHORIZED_RECOVERY_CONDITIONAL",
-    "evidence": "SYNTH replay: leaf claimant paid exact cumulative delta; claimedETH accounting verified",
-    "blocker": "merkle tree not published — leaf+proof must be obtained from K2/OpenGDP (administrative dependency); hard deadline: guardian may recoverETH after 2027-09-12 while paused"
-  },
-  "question_B_unauthorized_payout": {
-    "verdict": "AUTHORIZATION_BOUNDARY_CLOSED",
-    "evidence": "24/24 auth-matrix tests: all non-guardian privileged calls revert; leaf binds msg.sender; no recipient redirection; initialized; cumulative claimed accounting prevents replay"
-  },
-  "security_verdict": "NO_VULNERABILITY_CONFIRMED (audited surface); BOUNTY_SCOPE_NOT_CONFIRMED",
-  "bounty_scope": {
-    "program": "self-hosted; Karak->OpenGDP (Andalusia Labs), policy docs.opengdp.network/get-started/security/bug-bounty.md, contact security@andalusia-labs.com",
-    "k2_scope_confirmed": false,
-    "note": "C4 2024-07 audit covered Karak RESTAKING vaults, not K2 bridge — no overlap assumed"
-  },
-  "local_replay": {
-    "harness": "anvil --fork-url <eth-mainnet archive> --fork-block-number 26347966",
-    "driver": "devin/local-replay/auth_matrix_full.py",
-    "results": "devin/local-replay/withdrawal-matrix.json",
-    "tests": 24, "passed": 24,
-    "synth_labeling": "guardian-impersonated txs marked SYNTH; no impersonation presented as ownership evidence"
-  },
-  "cross_review": "INSUFFICIENT_EVIDENCE — Claude/DeepSeek original artifacts not yet present in repository; verified numbers match where independently recomputed",
-  "not_run": ["full pre-shutdown fund-flow ledger", "EYM impl source audit", "Safe threshold/owner verification", "off-chain tree audit"]
+ "contestant": "devin",
+ "pin_block": 26347966,
+ "pin_hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d",
+ "question_A_owner_recovery": {
+  "route": "claimETH / claimTokens with guardian-published merkle leaf",
+  "verdict": "AUTHORIZED_RECOVERY_CONDITIONAL",
+  "evidence": "SYNTH replay: leaf claimant paid exact cumulative delta; claimedETH accounting verified",
+  "blocker": "merkle tree not published \u2014 leaf+proof must be obtained from K2/OpenGDP (administrative dependency); hard deadline: guardian may recoverETH after 2027-09-12 while paused"
+ },
+ "question_B_unauthorized_payout": {
+  "verdict": "AUTHORIZATION_BOUNDARY_CLOSED",
+  "evidence": "24/24 auth-matrix tests: all non-guardian privileged calls revert; leaf binds msg.sender; no recipient redirection; initialized; cumulative claimed accounting prevents replay"
+ },
+ "security_verdict": "NO_VULNERABILITY_CONFIRMED (audited surface); BOUNTY_SCOPE_NOT_CONFIRMED",
+ "bounty_scope": {
+  "program": "self-hosted; Karak->OpenGDP (Andalusia Labs), policy docs.opengdp.network/get-started/security/bug-bounty.md, contact security@andalusia-labs.com",
+  "k2_scope_confirmed": false,
+  "note": "C4 2024-07 audit covered Karak RESTAKING vaults, not K2 bridge \u2014 no overlap assumed"
+ },
+ "local_replay": {
+  "harness": "anvil --fork-url <eth-mainnet archive> --fork-block-number 26347966",
+  "driver": "devin/local-replay/auth_matrix_full.py",
+  "results": "devin/local-replay/withdrawal-matrix.json",
+  "tests": 24,
+  "passed": 24,
+  "synth_labeling": "guardian-impersonated txs marked SYNTH; no impersonation presented as ownership evidence"
+ },
+ "cross_review": "INSUFFICIENT_EVIDENCE \u2014 Claude/DeepSeek original artifacts not yet present in repository; verified numbers match where independently recomputed",
+ "not_run": [
+  "full pre-shutdown fund-flow ledger",
+  "Safe threshold/owner verification",
+  "off-chain tree audit"
+ ],
+ "correction_2026-11-07": "EYM 0x98078db was Blast custody, removed; not_run list updated"
 }

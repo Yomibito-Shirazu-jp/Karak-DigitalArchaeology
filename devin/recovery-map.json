@@ -1,15 +1,50 @@
 {
   "classification": "B",
   "justification": "live claimETH/claimTokens recovery; entitlement proof requires unpublished guardian-set merkle tree (administrative dependency)",
-  "pin": {"block": 26347966, "hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d"},
+  "pin": {
+    "block": 26347966,
+    "hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d"
+  },
   "assets": [
-    {"contract": "0xeeCE9CD7Abd1CC84d9dfc7493e7e68079E47eA73", "asset": "ETH", "amount": "1846.4981969416722", "claim_route": "claimETH(uint256,bytes32[])"},
-    {"contract": "0xBa61f25DD9F2D5f02d01B1C2c1c5F0b14C4B48a3", "asset": "USDC", "amount": "156769.046684", "claim_route": "claimTokens(address[],uint256[],bytes32[])"},
-    {"contract": "0xBa61f25DD9F2D5f02d01B1C2c1c5F0b14C4B48a3", "asset": "rswETH", "amount_wei": "166553334246815451011", "claim_route": "claimTokens"},
-    {"contract": "0x98078db053902644191f93988341E31289E1C8FE", "asset": "stETH", "amount_wei": "12961804628556163626", "claim_route": "unresolved (EYM queue semantics)"}
+    {
+      "contract": "0xeeCE9CD7Abd1CC84d9dfc7493e7e68079E47eA73",
+      "asset": "ETH",
+      "amount": "1846.4981969416722",
+      "claim_route": "claimETH(uint256,bytes32[])"
+    },
+    {
+      "contract": "0xBa61f25DD9F2D5f02d01B1C2c1c5F0b14C4B48a3",
+      "asset": "USDC",
+      "amount": "156769.046684",
+      "claim_route": "claimTokens(address[],uint256[],bytes32[])"
+    },
+    {
+      "contract": "0xBa61f25DD9F2D5f02d01B1C2c1c5F0b14C4B48a3",
+      "asset": "rswETH",
+      "amount_wei": "166553334246815451011",
+      "claim_route": "claimTokens"
+    }
   ],
-  "claimed_to_date": {"eth_events": 300, "unique_claimers": 300, "eth_total": 29.723958719929808},
-  "deadline": {"recovery_timestamp": 1820707200, "date": "2027-09-12", "effect": "guardian sweep of all escrow while paused"},
-  "admin_dependencies": ["guardian Safe 0x28A227d4faF0f4f75897438E24C43EF1CDABb920", "unpublished merkle tree", "pause control"],
-  "open_questions": ["total entitlements", "tree coverage of USDC/rswETH", "EYM queue obligations", "Safe threshold/owners"]
+  "claimed_to_date": {
+    "eth_events": 300,
+    "unique_claimers": 300,
+    "eth_total": 29.723958719929808
+  },
+  "deadline": {
+    "recovery_timestamp": 1820707200,
+    "date": "2027-09-12",
+    "effect": "guardian sweep of all escrow while paused"
+  },
+  "admin_dependencies": [
+    "guardian Safe 0x28A227d4faF0f4f75897438E24C43EF1CDABb920",
+    "unpublished merkle tree",
+    "pause control"
+  ],
+  "open_questions": [
+    "total entitlements",
+    "tree coverage of USDC/rswETH",
+    "EYM queue obligations",
+    "Safe threshold/owners"
+  ],
+  "correction_2026-11-07": "EYM 0x98078db removed \u2014 Blast L1 escrow, not K2 (owner 0x4f72ee94b8ba3be7f886565d3583a7f636c58b05)."
 }
