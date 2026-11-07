@@ -1,0 +1,36 @@
+{
+  "pin_block": 26347966,
+  "pin_hash": "0x9a1b6259fc3e849d539defa91a0aa6b460fdf28fb5d6c774d7e7b767d08d6e0d",
+  "custody_assets": {
+    "OptimismPortal 0xeeCE9CD7Abd1CC84d9dfc7493e7e68079E47eA73": {
+      "ETH": "1846.4981969416722"
+    },
+    "L1StandardBridge 0xBa61f25DD9F2D5f02d01B1C2c1c5F0b14C4B48a3": {
+      "USDC": "156769.046684",
+      "rswETH_wei": "166553334246815451011",
+      "ETH": "0"
+    }
+  },
+  "claims_executed": {
+    "ETHClaimed_events": 300,
+    "unique_claimers": 300,
+    "total_ETH_claimed": 29.723958719929808,
+    "source": "eth_getLogs ETHClaimed(address indexed,uint256) full-history scan to pin block"
+  },
+  "liabilities": {
+    "total_entitlements": "UNKNOWN \u2014 merkle tree not published",
+    "claimed_cumulative": "sum of claimedETH deltas = 29.723958719929808 ETH",
+    "unclaimed_lower_bound": "1846.4981969416722 ETH in portal escrow minus any non-claimant allocation",
+    "insolvency_note": "claimable <= balance enforcement is FCFS; if sum(entitlements) > escrow, late claimants revert"
+  },
+  "discrepancy": {
+    "L2BEAT_reported_ETH": 1876,
+    "observed_ETH": 1846.4981969416722,
+    "delta": "~29.5 ETH \u2014 consistent with 29.7239 ETH claimed via 300 ETHClaimed events (snapshot timing)"
+  },
+  "invariants": {
+    "escrow_delta_equals_payout": "verified in local replay (exact to wei)",
+    "internal_vs_external": "sweepETH L1SB->portal donateETH is internal, not an outflow"
+  },
+  "correction_2026-11-07": "ETHYieldManager 0x98078db\u2026 misattributed: it is a BLAST L1 escrow (L2BEAT blast.json, owner 0x4f72ee94\u2026), not K2. Removed from K2 custody."
+}
